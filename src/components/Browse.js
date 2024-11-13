@@ -7,7 +7,7 @@ import SecondaryContainer from './SecondaryContainer';
 const Browse = () => {
   useNowplaying();
   return (
-    <div>
+    <div className='bg-gray-950'>
       <Header/>
        <MainContainer/>
        <SecondaryContainer/>
