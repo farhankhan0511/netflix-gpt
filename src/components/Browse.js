@@ -8,11 +8,11 @@ import { useSelector } from 'react-redux';
 
 const Browse = () => {
   useNowplaying();
-  const showSearch=useSelector((store)=>store?.GptSearch?.ShowGptSearch)
+  let show=useSelector((store)=>store?.GptSearch?.ShowGptSearch)
   return (
     <div className='bg-gray-950'>
       <Header/>      
-      {showSearch? (<GptSearch/>):(
+      {show? (<GptSearch/>):(
       <>
          <MainContainer/>
          <SecondaryContainer/>

@@ -30,7 +30,7 @@ const Header = () => {
 
 const handlegptsearch=()=>{
   dispatch(toggleGptview())  
-  if(!showSearch)dispatch(clearSearchResult())
+  // !showSearch && dispatch(clearSearchResult())
   
 }
 const handlelang=()=>{
@@ -54,7 +54,7 @@ const handlelang=()=>{
     return ()=> unsubscirbe;
 },[])
   return (
-    <div className='z-20 absolute  px-8 py-2 bg-gradient-to-b from-black w-full flex justify-between'>
+    <div className='z-20 absolute top-0  px-8 py-2 bg-gradient-to-b from-black w-full flex justify-between'>
         <img  className=" w-44" src={logo} alt="Logo"/>
      
      {user && ( 

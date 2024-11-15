@@ -7,13 +7,15 @@ import {backimg} from '../utils/constant'
 const GptSearch = () => {
    
   return (
-    <div>
+    <>
         <div className='absolute'>
             <img src={backimg} alt="background-img"/>
         </div>
+    <div>
         <GptSearchbar/>
         <GptMovieSuggestion/>
     </div>
+    </>
   )
 }
 
