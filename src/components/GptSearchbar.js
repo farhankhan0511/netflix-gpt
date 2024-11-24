@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { lang } from '../utils/languageConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import opeanai from "../utils/openai"
@@ -8,7 +8,6 @@ const GptSearchbar = () => {
     const intext=useRef(null)
     const dispatch=useDispatch()
     const slang=useSelector((store)=>store?.configLang?.preflang)
-    const [content,setcontent]=useState("")
     
     const handleGptSearch=async()=>{
         console.log(intext.current.value)
@@ -24,8 +23,7 @@ const GptSearchbar = () => {
   
           
         } catch (err) {
-          console.log(err.message)
-          setcontent(err.message)
+          alert("Apologies!!! The Api budget has ended ")
         }
     }
   return (
@@ -39,7 +37,7 @@ const GptSearchbar = () => {
 
         <button className='py-2 px-4 bg-red-800 rounded-lg col-span-3' onClick={handleGptSearch} >{lang[slang]?.search}</button>
         </form>
-        <p className='text-red-700'>{content}</p>
+        
         
     </div>
   )
