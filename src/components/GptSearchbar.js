@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { lang } from '../utils/languageConstants'
 import { useDispatch, useSelector } from 'react-redux'
 import opeanai from "../utils/openai"
@@ -8,19 +8,25 @@ const GptSearchbar = () => {
     const intext=useRef(null)
     const dispatch=useDispatch()
     const slang=useSelector((store)=>store?.configLang?.preflang)
+    const [content,setcontent]=useState("")
     
     const handleGptSearch=async()=>{
         console.log(intext.current.value)
 
-        const gptquerey="Act as an Movie Recommendation System and suggest movie for the following query: "+ intext.current.value+". Only give 5 moveis and their name only seperated by commas in the manner ahead. Example Ahead: Don,Hera pheri,Dhoom,Padosan,Sholay"
-        const chatCompletion=await opeanai.chat.completions.create({
-            messages:[{role:'user',content:gptquerey}],
-            model:'gpt-3.5-turbo',
-        })
-        console.log(chatCompletion.choices[0]?.messages.content )
-        dispatch(addSearchedResult( chatCompletion.choices[0]?.messages.content))
-
-        
+        try {
+          const gptquerey="Act as an Movie Recommendation System and suggest movie for the following query: "+ intext.current.value+". Only give 5 moveis and their name only seperated by commas in the manner ahead. Example Ahead: Don,Hera pheri,Dhoom,Padosan,Sholay"
+          const chatCompletion=await opeanai.chat.completions.create({
+              messages:[{role:'user',content:gptquerey}],
+              model:'gpt-3.5-turbo',
+          })
+          console.log(chatCompletion.choices[0]?.messages.content )
+          dispatch(addSearchedResult( chatCompletion.choices[0]?.messages.content))
+  
+          
+        } catch (err) {
+          console.log(err.message)
+          setcontent(err.message)
+        }
     }
   return (
     <div className=' absolute top-[18%] flex justify-center z-10 w-full'>
@@ -33,6 +39,7 @@ const GptSearchbar = () => {
 
         <button className='py-2 px-4 bg-red-800 rounded-lg col-span-3' onClick={handleGptSearch} >{lang[slang]?.search}</button>
         </form>
+        <p className='text-red-700'>{content}</p>
         
     </div>
   )
