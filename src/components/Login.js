@@ -83,11 +83,11 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   return (
     <div>
         <Header/>
-        <div className='absolute'>
-            <img src={backimg} alt="background-img"/>
+        <div className='absolute '>
+            <img  className=" object-cover h-screen md:h-auto md:bg-fixed" src={backimg} alt="background-img"/>
         </div>
 
-        <form  onSubmit={(e)=>e.preventDefault()} className='p-12 bg-opacity-80 bg-black absolute w-3/12 my-40 mx-auto  right-0 left-0 text-white'>
+        <form  onSubmit={(e)=>e.preventDefault()} className='p-12 bg-opacity-80 bg-black absolute  w-full md:w-3/12 my-40 mx-auto  right-0 left-0 text-white'>
 
         <h1 className='text-2xl  m-2 p-4 '>{isSignin? "Sign In ": "Sign Up"}</h1>
       

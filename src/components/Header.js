@@ -7,7 +7,7 @@ import { addUser,removeUser } from '../utils/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { logo,SUPPORTED_LANGUAGES,useravatar } from '../utils/constant';
-import { clearSearchResult, toggleGptview } from '../utils/Gptslice';
+import {  toggleGptview } from '../utils/Gptslice';
 import { togglelanguage } from '../utils/ConfigSlice';
 
 const Header = () => {
@@ -55,7 +55,7 @@ const handlelang=()=>{
 },[])
   return (
     <div className='z-20 absolute top-0  px-8 py-2 bg-gradient-to-b from-black w-full flex justify-between'>
-        <img  className=" w-44" src={logo} alt="Logo"/>
+        <img  className="w-28 md:w-44" src={logo} alt="Logo"/>
      
      {user && ( 
           
@@ -72,8 +72,8 @@ const handlelang=()=>{
      <button onClick={handlegptsearch} className='py-2 px-4 mx-2 my-2   bg-purple-800 text-white rounded-lg'>{showSearch?"Home":"Gpt Search"}</button>
 
 
-    <img className='w-12 h-12 m-2' alt='user logo' src={useravatar}/>
-    <button onClick={handlesignout} className='font-bold text-white'>Sign Out</button>
+    <img className='hidden md:block w-12 h-12 m-2' alt='user logo' src={useravatar}/>
+    <button onClick={handlesignout} className='font-bold text-white md:font-medium'>Sign Out</button>
     </div>
      )
 
