@@ -1,7 +1,8 @@
 import React from 'react'
 import useListmovies from '../Hooks/useListmovies'
 import { useSelector } from 'react-redux'
-import Movielist from './Movielist'
+import Movielist from './MovieList'
+
 
 const SecondaryContainer = () => {
     useListmovies()

@@ -7,7 +7,7 @@ import { addUser,removeUser } from '../utils/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { logo,SUPPORTED_LANGUAGES,useravatar } from '../utils/constant';
-import {  toggleGptview } from '../utils/Gptslice';
+import {  toggleGptSearchView} from '../utils/Gptslice';
 import { togglelanguage } from '../utils/ConfigSlice';
 
 const Header = () => {
@@ -29,7 +29,7 @@ const Header = () => {
 
 
 const handlegptsearch=()=>{
-  dispatch(toggleGptview())  
+  dispatch(toggleGptSearchView())  
   // !showSearch && dispatch(clearSearchResult())
   
 }

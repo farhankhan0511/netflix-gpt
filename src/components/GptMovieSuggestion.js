@@ -1,25 +1,24 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import useSearchMovie from '../Hooks/useSearchMovie'
-import MovieCard from "./MovieCard"
-const GptMovieSuggestion = () => {
-    const result=useSelector((store)=>store?.GptSearch?.Searched)
-    
-    useSearchMovie(result)
-    const movies=useSelector((store)=>store?.GptSearch?.Searched)
+import { useSelector } from "react-redux";
+import MovieList from "./MovieList";
 
-            
+const GptMovieSuggestions = () => {
+  const  movieNames = useSelector((store) => store?.GptSearch?.movieNames);
+  const  movieResults = useSelector((store) => store?.GptSearch?.movieResults);
+  
+  if (!movieNames) return null;
+
   return (
-    <div className='flex m-4 p-4 bg-black'>
-        {
-            movies?.map((movie)=>(
-                <MovieCard  key={movie?.id} movie={movie} />
-            )
-                
-            )
-        }
+    <div className=" bg-black text-white bg-opacity-90">
+      <div>
+        {movieNames?.map((movieName, index) => (
+          <MovieList
+            key={movieName}
+            title={movieName}
+            movies={movieResults[index]}
+          />
+        ))}
+      </div>
     </div>
-  )
-}
-
-export default GptMovieSuggestion
+  );
+};
+export default GptMovieSuggestions;
