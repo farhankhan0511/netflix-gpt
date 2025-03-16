@@ -16,4 +16,4 @@ export const apioptions= {
 
   export const SUPPORTED_LANGUAGES=[{identifier:'en',name:"English"},{identifier:'hindi',name:"Hindi"},{identifier:'spanish',name:"Spanish"}]
   
-export const GPTKEY=process.env.GPTKEY
+export const GPTKEY=process.env.REACT_APP_GPTKEY
