@@ -69,7 +69,7 @@ const handlelang=()=>{
         </>
       }
 
-     <button onClick={handlegptsearch} className='py-2 px-4 mx-2 my-2   bg-purple-800 text-white rounded-lg'>{showSearch?"Home":"Gpt Search"}</button>
+     <button onClick={handlegptsearch} className='py-2 px-4 mx-2 my-2   bg-purple-800 text-white rounded-lg'>{showSearch?"Home":"Search"}</button>
 
 
     <img className='hidden md:block w-12 h-12 m-2' alt='user logo' src={useravatar}/>

@@ -8,7 +8,7 @@ export const apioptions= {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer '+ process.env.REACT_APP_TMDB_KEY
+      Authorization: 'Bearer '+ process.env.REACT_APP_TMDB_KEY || window.runtimeConfig.REACT_APP_TMDB_KEY
     }
   };
 
@@ -16,4 +16,4 @@ export const apioptions= {
 
   export const SUPPORTED_LANGUAGES=[{identifier:'en',name:"English"},{identifier:'hindi',name:"Hindi"},{identifier:'spanish',name:"Spanish"}]
   
-export const GPTKEY=process.env.REACT_APP_GPTKEY
+export const GPTKEY=process.env.REACT_APP_GPTKEY || window.runtimeConfig.REACT_APP_GPTKEY

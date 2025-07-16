@@ -1,17 +1,42 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Fetch runtime configuration from config.json
+fetch('/config.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to load config.json');
+    }
+    return response.json();
+  })
+  .then(config => {
+    // Store config globally (or use your own state management)
+    window.runtimeConfig = config;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+    // Render the app after config is loaded
+    const container = document.getElementById('root');
+    const root = createRoot(container);
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  })
+  .catch(error => {
+    console.error('Error loading configuration:', error);
+    
+    // Optionally render the app with default configuration
+    const container = document.getElementById('root');
+    const root = createRoot(container);
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  });
+
+// Start measuring performance in your app
 reportWebVitals();
