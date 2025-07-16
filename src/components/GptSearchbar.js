@@ -33,11 +33,11 @@ const GptSearchbar = () => {
         ". Only give 5 movies and their names separated by commas in the format ahead. Example: Don, Hera Pheri, Dhoom, Padosan, Sholay";
 
       const genAi = new GoogleGenerativeAI(GPTKEY);
-      console.log(genAi);
+     
       const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
       const response = await model.generateContent(gptquerey);
 
-      console.log(response);
+      
 
       const gptMovies = response.response.candidates[0].content.parts[0].text.split(",");
 
